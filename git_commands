@@ -1,0 +1,214 @@
+Central version control system vs Distributed VCS (git)
+
+Central - located in one place
+
+Distributed - Everyone has a local repository
+Everything on remote is visible in local when synced
+
+there is a folder called local-repo that you want to track. when you initialize it it will create a .git file that has all the info about your project. Removing the .git file will stop tracking
+
+see the status of the files in your repo. This will show you the tracked and untracked files. You can ignore certain files using a .gitignore file.
+
+3 states we need to know about
+WORKING DIRECTORY
+untracked and modified files listed with git status
+STAGING AREA
+where we organize what we want to be commited to repo
+from here we can pick and choose what we want committed
+allows us to be more detailed with commits
+COMMITED FILES
+
+You can remove files from staging area with git reset
+
+You can commit all the files in the staging area to the repo and add a message with git commit -m
+
+There is a remote repo you want to work on
+clone the repo to your local
+You can now make a change on your local
+Use git diff to see the changes you made
+add them to the staging area like before
+commit them with a message
+
+Now you can pull from the remote repo if necessary to see if anyone has made changes WHILE you've been working on the file
+
+Then when you're satisfied you can git push changes to the master
+
+You can create a new local development branch and make changes and commit with no effect on local master or remote
+
+Undoing changes to a file
+make changes to a file and then just use checkout to roll file back to last checkout point
+
+undoing an incorrect message is also possible
+you can also add a file to last commit if you forgot to
+REMINDER: only undo things in this way if you HAVEN'T pushed your changes to other people. this changes your git history and could ruin their repos
+
+You can move a commit to another branch if you accidentally commited to, say, the master branch. cherrypicking creates a new commit based off of an original. it does not delete the original. you must reset it separately
+
+https://youtu.be/HVsySz-h9r4
+
+check version of git
+git --version
+
+set config values
+git config --global user.name "John Doe"
+git config --global user.email "email@here.com"
+
+check config values
+git config --list
+
+check help docs
+git help <action>
+git <action> --help
+ex git help config
+ex git config --help
+
+Initialize a repository from existing code
+git init
+
+See status of files in repo
+git status
+
+create a .gitignore file
+touch .gitignore
+nano .gitignore
+type the files you want ignored
+ex .project (ignores a hidden file named .project)
+ex *.py (ignores all python extensions)
+
+add all files currently untracked or changed to staging area
+git add -A
+
+add individual file to staging area
+git add filename
+ex git add .gitignore (adds file to staging area)
+
+remove individual file from staging area
+git reset filename
+ex git reset calc.py
+
+commit files in staging area to repo
+git commit -m "insert message here"
+
+cloning a remote repo to local (. means current directory)
+git clone <url><where to clone>
+ex git clone https://github.com/group/remote_repo.git .
+
+for a private repository ex
+git clone https://username:mygithubpassword@github.com/strafe/project.git
+
+tell our local Git project where the remote project is. Git calls the remote project URL the “origin,” so we need to run this command to set it up. replace url with the url from the github repo you created
+git remote add origin <URL>
+
+view info about the remote repository
+git remote -v
+git branch -a
+
+see the changes you made to a repo
+git diff
+
+pull all changes others made since you've been working
+git pull origin master
+
+push changes that you commited to the master
+git push origin master
+
+SUMMARIZED PUSH CHANGES
+changes are made locally
+git diff
+git status
+git add -A (for all files)
+git commit -m "message here"
+git pull origin master
+git push origin master
+
+Create a branch for a desired feature
+git branch name-of-branch
+
+see all local branches
+git branch
+
+Work on that branch
+git checkout name-of-branch
+
+after commit push branch to remote
+the -u indicates that we want to associate our local dev branch with the remote dev branch and then in the future we can just use git push and pull and it will know that the two branches are associated
+git push -u origin name-of-branch
+
+git branch -a (see all branches)
+
+Merge a branch
+git checkout master
+git pull origin master
+
+See which branches have been merged
+git branch --merged
+
+continue merging branch
+git merge name-of-branch
+git push origin master
+
+delete a branch
+git branch --merged (see the merged branches)
+git branch -d name-of-branch (delete)
+git branch -a (see all branches)
+git push origin --delete name-of-branch (delete remote branch)
+git branch -a (to check if deleted)
+
+https://youtu.be/FdZecVxzJbk
+
+go back to state of file if you've made a bad save
+(will go back to last commited state)
+git checkout filename
+
+undo incorrect commit message
+git commit --amend -m "the correct message here"
+
+add file upload to last commit if you forgot
+git commit --amend(NOW PRESS ENTER TO ENTER vi)
+the commit message can now be edit
+ESC :wq (save)
+
+See git commit history
+git log
+git log --stat (see files that were changed)
+
+move commit to another branch
+git log (to grab the commit hash)
+git checkout name-of-branch (switch to correct branch)
+git cherry-pick hash (grab the commit)
+
+delete original commit
+git checkout name-of-branch (go to the bad commit)
+git reset --soft hash (deletes all commits after hash commit but keeps files in staging)
+git reset hash (default mixed reset. commits are deleted but changes are left in working directory)
+git reset --hard hash (all tracked files are reverted to original state. untracked files are left alone)
+git clean -df (removes untracked files too. d removes untracked and f means force)
+
+reverse reset --hard
+git reflog (shows commits in order of last referenced)
+git checkout hash (hash of before reset)
+git log (see the changes are back. this is a detached head state. you need to save this state as a branch to keep the files this way otherwise they will be trashed)
+git branch new-branch-name (save headstate to branch)
+
+
+reverse the effect of old commits by creating new commits that undo older changes
+git revert hash (save file in vi)
+git log (see the new commit that undoes other commit)
+
+see changes between two commits
+git diff hash1 hash2
+
+DIFFERENCES BETWEEN git add...
+https://youtu.be/tcd4txbTtAY
+
+add all modified and deleted files but not any new untracked files
+git add -u
+git add -u directory/ (only files in the directory)
+
+add changes in current directory, without deletions
+git add .
+
+add changes in the whole tree - modified, deleted, new, hidden
+git add -A
+
+
