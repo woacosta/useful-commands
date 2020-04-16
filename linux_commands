@@ -124,12 +124,27 @@ run the script "testscript" in the current directory
 
 VIM commands
 
+move to first line
+:0
+
+move to line n
+:n
+
+move to last line
+:$
+
 insert new text
 :i
+
+undo
+u
 
 write to new filename
 :w! newfilename
 
 write and quit
 :wq
+
+quit without changes
+:q!
 
