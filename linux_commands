@@ -1,6 +1,12 @@
 wipe current line
 ctrl e + ctrl u
 
+home
+ctrl a
+
+end
+ctrl e
+
 see current directory
 pwd
 
