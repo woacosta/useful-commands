@@ -122,3 +122,8 @@ run the script "testscript" in the current directory
 ./testscript
 
 
+VIM commands
+
+insert new text
+:i
+
