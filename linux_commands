@@ -28,6 +28,9 @@ cd ..
 create a file
 touch file1.txt
 
+create a directory
+mkdir foldername
+
 see what's in a file
 cat file1.txt
 
