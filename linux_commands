@@ -7,6 +7,9 @@ ctrl a
 end
 ctrl e
 
+delete whole line
+ctrl u
+
 see current directory
 pwd
 
