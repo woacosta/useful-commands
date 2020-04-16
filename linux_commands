@@ -127,3 +127,9 @@ VIM commands
 insert new text
 :i
 
+write to new filename
+:w! newfilename
+
+write and quit
+:wq
+
