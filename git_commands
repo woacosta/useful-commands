@@ -99,6 +99,9 @@ git clone https://username:mygithubpassword@github.com/strafe/project.git
 tell our local Git project where the remote project is. Git calls the remote project URL the “origin,” so we need to run this command to set it up. replace url with the url from the github repo you created
 git remote add origin <URL>
 
+to change the remote origin
+git remote set-url origin https://github.com/USERNAME/REPOSITORY.git
+
 view info about the remote repository
 git remote -v
 git branch -a
