@@ -10,6 +10,11 @@ ctrl e
 delete whole line
 ctrl u
 
+clear terminal
+clear
+
+## Navigating the file system
+
 see current directory
 pwd
 
@@ -22,23 +27,25 @@ ls -a
 see files with more info like rw permissions
 ls -l
 
+see hidden and more info
+ls -la
+
 navigate to root
 cd /
 
 navigate home
 cd ~
 
-clear terminal
-clear
-
 move down one level
 cd ..
 
+move down two levels
+cd ../..
+
+## Creating, Copying, Moving, Renaming, removing Files and Directories
+
 create a file
 touch file1.txt
-
-create a directory
-mkdir foldername
 
 see what's in a file
 cat file1.txt
@@ -51,17 +58,34 @@ q
 rename file1 to file2
 mv file1.txt file2.txt
 
+move file1 to another folder named Subdir
+mv file1.txt Subdir/
+
+move file1 to another folder and rename newname.txt
+mv file1.txt Subdir/newname.txt
+
 copy file2 to file named file1
 cp file2.txt file1.txt
 
 copy file1 to another folder named folder2
 cp file1.txt ../folder2/file1.txt
 
-copy all text files in directory to home folder using *
-cp *.txt ~/
-
 remove a file
 rm file1.txt
+
+create a directory named foldername
+mkdir foldername
+
+### Directories
+
+copy contents of directory named TestDir to folder named CopyDir
+cp -R TestDir/ CopyDir/
+
+rename directory TestDir to new name OrigDir
+mv TestDir OrigDir
+
+copy all text files in directory to home folder using *
+cp *.txt ~/
 
 remove a directory named linux2 (if directory empty)
 rmdir linux2
@@ -74,6 +98,14 @@ which python
 
 show history of commands typed in terminal (500?)
 history
+
+## Find Command
+
+
+
+
+
+
 
 run as root user
 sudo
@@ -122,7 +154,7 @@ run the script "testscript" in the current directory
 ./testscript
 
 
-VIM commands
+## VIM commands
 
 move to first line
 :0
