@@ -133,6 +133,9 @@ git branch
 Work on that branch
 git checkout name-of-branch
 
+create and switch to branch in one step
+git checkout -b name-of-new-branch
+
 after commit push branch to remote
 the -u indicates that we want to associate our local dev branch with the remote dev branch and then in the future we can just use git push and pull and it will know that the two branches are associated
 git push -u origin name-of-branch

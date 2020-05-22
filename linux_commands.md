@@ -7,11 +7,27 @@ ctrl a
 end
 ctrl e
 
-delete whole line
+move one word at a time
+option + move cursor back and forth
+
+move cursor to target point in a line
+option + click target point
+
+delete everything before cursor
 ctrl u
 
+delete everything after cursor
+ctrl k
+
+see command history
+history
+
+rerun command from history
+!number-from-history-output
+ex !564
+
 clear terminal
-clear
+clear or ctrl l (cmd k for no scrollback)
 
 ## Navigating the file system
 
@@ -88,7 +104,7 @@ cp -R TestDir/ CopyDir/
 rename directory TestDir to new name OrigDir
 mv TestDir OrigDir
 
-copy all text files in directory to home folder using *
+copy all text files in directory to home folder using an asterisk
 cp *.txt ~/
 
 remove a directory named linux2 (if directory empty)
@@ -121,7 +137,7 @@ find files that begin with 'test' case insensitive
 find .type f -iname "test*"
 
 find files that are of type .py
-find .type f -name "*.py"
+`find .type f -name "*.py"`
 
 find files modified in last x minutes ex 10 minutes
 find .type f -mmin -10
@@ -142,7 +158,7 @@ find files by file size in current directory ex 5 megabytes. use k or G for kilo
 find . -size +5M
 
 find all jpg files in current directory and then delete them all. note that the curly brackets are to include all the results of find and the + is to end the command
-find . -type f -name "*.jpg" -maxdepth 1 -exec rm {} +
+`find . -type f -name "*.jpg" -maxdepth 1 -exec rm {} +`
 
 
 ## Grep command (global regular expression print)
@@ -317,4 +333,3 @@ write and quit
 
 quit without changes
 :q!
-
